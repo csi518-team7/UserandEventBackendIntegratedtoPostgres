@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="transactions")
 public class Trasaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,6 +16,14 @@ public class Trasaction {
     private String userName;
     private int EventID;
     private String eventName;
+
+    public Trasaction(int userID, String userName, int EventID, String  eventName) {
+        //this.eventID = eventID;
+        this.userID = userID;
+        this.userName = userName;
+        this.EventID = EventID;
+        this.eventName = eventName;
+    }
 
     public int getTransactionID() {
         return transactionID;
