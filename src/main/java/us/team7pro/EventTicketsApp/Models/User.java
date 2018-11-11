@@ -1,29 +1,31 @@
 package us.team7pro.EventTicketsApp.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
-    
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userID;
 
     // User, Admin, Organizer
+    @Column(name = "role")
     private String role;
+    @Column(name = "userName")
     private String userName;
+    @Column(name = "password")
     private String password;
+    @Column(name = "email")
     private String email;
-    private int[] transactions;
+    @Column(name = "transactions")
+    private ArrayList<Integer> transactions;
 
-    public User( String role, String userName, String password, String email, int[] transactions) {
-        //this.eventID = eventID;
+    public User() {
+    }
+
+    public User(String role, String userName, String password, String email, ArrayList<Integer> transactions) {
         this.role = role;
         this.userName = userName;
         this.password = password;
@@ -71,11 +73,23 @@ public class User {
         this.email = email;
     }
 
-    public int[] getTransactions() {
+    public ArrayList<Integer> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(int[] transactions) {
+    public void setTransactions(ArrayList<Integer> transactions) {
         this.transactions = transactions;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", transactions=" + transactions +
+                '}';
     }
 }

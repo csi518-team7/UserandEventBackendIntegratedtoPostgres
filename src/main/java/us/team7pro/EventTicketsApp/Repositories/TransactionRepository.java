@@ -1,7 +1,9 @@
 package us.team7pro.EventTicketsApp.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import us.team7pro.EventTicketsApp.Models.Trasaction;
+import org.springframework.stereotype.Repository;
+import us.team7pro.EventTicketsApp.Models.Transaction;
 
-public interface TransactionRepository extends JpaRepository<Trasaction, Integer> {
+@Repository
+public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 }

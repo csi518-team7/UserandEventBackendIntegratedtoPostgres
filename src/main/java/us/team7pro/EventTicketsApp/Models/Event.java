@@ -1,33 +1,37 @@
 package us.team7pro.EventTicketsApp.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import java.util.Date;
+import javax.persistence.*;
 
 @Entity
-@Table(name="events")
+@Table(name = "events")
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eventID;
+    @Column(name = "eventName")
     private String eventName;
+    @Column(name = "eventCategory")
     private String eventCategory; // Concerts, Sports, Festivals
-    private Date date;
+    @Column(name = "eventDate")
+    private String date;
+    @Column(name = "location")
     private String location;
+    @Column(name = "description")
     private String description;
+    @Column(name = "price")
     private float price;
+    @Column(name = "imgUrl")
     private String imgUrl;
 
-    public Event( String eventName, String eventCategory, String location, Date date, String description, float price, String imgUrl) {
-        //this.eventID = eventID;
+    public Event(){
+        
+    }
+
+    public Event(String eventName, String eventCategory, String date, String location, String description, float price, String imgUrl) {
         this.eventName = eventName;
         this.eventCategory = eventCategory;
-        this.location = location;
         this.date = date;
+        this.location = location;
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
@@ -57,11 +61,11 @@ public class Event {
         this.eventCategory = eventCategory;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -95,5 +99,19 @@ public class Event {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventID=" + eventID +
+                ", eventName='" + eventName + '\'' +
+                ", eventCategory='" + eventCategory + '\'' +
+                ", date='" + date + '\'' +
+                ", location='" + location + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
     }
 }

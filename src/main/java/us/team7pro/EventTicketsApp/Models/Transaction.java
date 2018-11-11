@@ -1,27 +1,29 @@
 package us.team7pro.EventTicketsApp.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="transactions")
-public class Trasaction {
+@Table(name = "transactions")
+public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionID;
+    @Column(name = "userID")
     private int userID;
+    @Column(name = "userName")
     private String userName;
+    @Column(name = "EventID")
     private int EventID;
+    @Column(name = "eventName")
     private String eventName;
 
-    public Trasaction(int userID, String userName, int EventID, String  eventName) {
-        //this.eventID = eventID;
+    public Transaction() {
+    }
+
+    public Transaction(int userID, String userName, int eventID, String eventName) {
         this.userID = userID;
         this.userName = userName;
-        this.EventID = EventID;
+        EventID = eventID;
         this.eventName = eventName;
     }
 
@@ -63,5 +65,16 @@ public class Trasaction {
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionID=" + transactionID +
+                ", userID=" + userID +
+                ", userName='" + userName + '\'' +
+                ", EventID=" + EventID +
+                ", eventName='" + eventName + '\'' +
+                '}';
     }
 }
